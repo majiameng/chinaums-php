@@ -1,0 +1,26 @@
+{
+    "name": "tinymeng/chinaums",
+    "description": "一个银联商务sdk扩展包",
+    "keywords": ["tinymeng","chinaums","alipay", "wechat", "pay"],
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "tinymeng\\Chinaums\\": "src"
+        }
+    },
+    "authors": [
+        {
+            "name": "JiaMeng Ma",
+            "email": "666@majiameng.com",
+            "homepage": "https://www.majiameng.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "tinymeng/tools": "^2.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.5"
+    }
+}
