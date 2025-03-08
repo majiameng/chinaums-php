@@ -13,7 +13,7 @@
 composer require "tinymeng/chinaums"
 ```
 ## 使用示例
-更多示例可查看[test](./test/Wechat/)目录下的文件
+更多示例可查看[test](example/Wechat/)目录下的文件
 ```php
 <?php
 include_once '../../vendor/autoload.php';
