@@ -1,7 +1,6 @@
 <?php
 
-namespace tinymeng\Chinaums\Service\Wechat;
-
+namespace tinymeng\Chinaums\Service\Alipay;
 use tinymeng\Chinaums\Service\Common\Base;
 
 /**
@@ -12,7 +11,7 @@ class Mini extends Base
     /**
      * @var string 接口地址
      */
-    protected $api = '/netpay/wx/unified-order';
+    protected $api = '/netpay/trade/create';
     /**
      * @var array $body 请求参数
      */

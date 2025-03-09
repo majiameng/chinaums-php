@@ -1,7 +1,5 @@
 <?php
-
-namespace tinymeng\Chinaums\Service\Wechat;
-
+namespace tinymeng\Chinaums\Service\Unionpay;
 use tinymeng\Chinaums\Service\Common\Base;
 
 /**

@@ -2,7 +2,7 @@
 
 namespace tinymeng\Chinaums\Service\Wechat;
 
-use tinymeng\Chinaums\Service\Wechat\Base;
+use tinymeng\Chinaums\Service\Common\Base;
 
 /**
  * 关闭接口

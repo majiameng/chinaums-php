@@ -2,7 +2,7 @@
 
 namespace tinymeng\Chinaums\Service\Wechat;
 
-use tinymeng\Chinaums\Service\Wechat\Base;
+use tinymeng\Chinaums\Service\Common\Base;
 
 /**
  * 担保完成
@@ -12,7 +12,7 @@ class SecureComplete extends Base
     /**
      * @var string 接口地址
      */
-    protected $api = '/netpay/refund-query';
+    protected $api = '/netpay/secure-complete';
     /**
      * @var array $body 请求参数
      */

@@ -1,9 +1,9 @@
 <?php
 
-namespace tinymeng\Chinaums\Service\Wechat;
+namespace tinymeng\Chinaums\Service\Common;
 
-use tinymeng\Chinaums\Tools\Http;
 use Exception;
+use tinymeng\Chinaums\Tools\Http;
 
 class Base
 {
