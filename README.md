@@ -11,13 +11,14 @@
 
 Welcome Star, welcome PR ！
 
-> If you have any questions to communicate, please post them here ： [chinaums-php](https://github.com/majiameng/chinaums-php/issues/1) exchange Or Send an email 666@majiameng.com
+> If you have any questions to communicate, please post them here ： [chinaums-php](https://github.com/majiameng/chinaums-php/issues/) exchange Or Send an email 666@majiameng.com
 
 # 银联商务 支付 API
 银联商务sdk 和网银支付接口不一样，请注意。
 
 * 支持微信、支付宝、银联支付的API接口
 * 支持自助签约采集接口 [点击查看文档](/src/Service/Contract/README.md)
+* 如想申请更低费率请联系卫星：itinymeng 
 
 # 微信支付、支付宝支付、银联
 
