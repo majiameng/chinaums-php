@@ -82,6 +82,12 @@ echo 'response:' . $reponse . PHP_EOL;
 
 
 ```
+
+#### 订单配置参数
+所有订单配置中，客观参数均不用配置，扩展包已经为大家自动处理了，比如，appid，sign 等参数，大家只需传入订单类主观参数即可。
+
+所有订单配置参数和官方无任何差别，兼容所有功能，所有参数请参考以下文档
+
 ## 文档
 [点击查看银联商务官方文档](https://open.chinaums.com/resources/?code=651539656974952&url=b7abc3a6-0c49-43d4-ad7d-f6dd16ff35eb)
 
