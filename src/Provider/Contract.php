@@ -26,7 +26,7 @@ class Contract
 
     public function __call(string $shortcut, array $params)
     {
-        $class = '\\tinymeng\\Chinaums\\Service\\Contract\\' . Str::studly($shortcut);
+        $class = '\\tinymeng\\Chinaums\\Service\\'.__CLASS__.'\\' . Str::studly($shortcut);
         $objcet = new $class();
         $objcet->setConfig($this->config);
         return $objcet;

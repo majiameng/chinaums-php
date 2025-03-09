@@ -1,6 +1,6 @@
 {
     "name": "tinymeng/chinaums",
-    "description": "一个银联商务sdk扩展包",
+    "description": "银联商务sdk扩展包，让对接更简单",
     "keywords": ["tinymeng","chinaums","alipay", "wechat", "pay"],
     "type": "library",
     "license": "MIT",

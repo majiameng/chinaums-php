@@ -12,7 +12,7 @@ class SecureComplete extends Base
     /**
      * @var string 接口地址
      */
-    protected $api = '/netpay/secure-complete';
+    protected $api = '/v1/netpay/secure-complete';
     /**
      * @var array $body 请求参数
      */

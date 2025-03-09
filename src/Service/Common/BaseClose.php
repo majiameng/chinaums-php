@@ -1,18 +1,17 @@
 <?php
 
-namespace tinymeng\Chinaums\Service\Wechat;
+namespace tinymeng\Chinaums\Service\Common;
 
-use tinymeng\Chinaums\Service\Common\Base;
 
 /**
- * 查询接口
+ * 关闭接口
  */
-class Query extends Base
+class BaseClose extends Base
 {
     /**
      * @var string 接口地址
      */
-    protected $api = '/v1/netpay/query';
+    protected $api = '/v1/netpay/close';
     /**
      * @var array $body 请求参数
      */

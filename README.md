@@ -1,19 +1,48 @@
+<h1 align="center">tinymeng/chinaums</h1>
+<p align="center">
+<a href="https://scrutinizer-ci.com/g/majiameng/chinaums-php/?branch=master"><img src="https://scrutinizer-ci.com/g/majiameng/chinaums-php/badges/quality-score.png?b=master" alt="Scrutinizer Code Quality"></a>
+<a href="https://scrutinizer-ci.com/g/majiameng/chinaums-php/build-status/master"><img src="https://scrutinizer-ci.com/g/majiameng/chinaums-php/badges/build.png?b=master" alt="Build Status"></a>
+<a href="https://packagist.org/packages/tinymeng/chinaums"><img src="https://poser.pugx.org/tinymeng/chinaums/v/stable" alt="Latest Stable Version"></a>
+<a href="https://github.com/majiameng/chinaums-php/tags"><img src="https://poser.pugx.org/tinymeng/chinaums/downloads" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/tinymeng/chinaums"><img src="https://poser.pugx.org/tinymeng/chinaums/v/unstable" alt="Latest Unstable Version"></a>
+<a href="https://github.com/majiameng/chinaums-php/blob/master/LICENSE"><img src="https://poser.pugx.org/tinymeng/chinaums/license" alt="License"></a>
+</p>
+
+
+Welcome Star, welcome PR ！
+
+> If you have any questions to communicate, please post them here ： [chinaums-php](https://github.com/majiameng/chinaums-php/issues/1) exchange Or Send an email 666@majiameng.com
+
 # 银联商务 支付 API
 银联商务sdk 和网银支付接口不一样，请注意。
 
-* 支持微信小程序支付的API接口
+* 支持微信、支付宝、银联支付的API接口
 * 支持自助签约采集接口 [点击查看文档](/src/Service/Contract/README.md)
-* 其他支付宝和银联支付需要时在添加
+
+# 微信支付、支付宝支付、银联
+
+微信支付目前直接内置支持以下快捷方式支付方法，对应的支付 method 如下：
+
+|  method  |   说明   |      参数      |    返回值     |
+|:--------:|:------:|:------------:|:----------:|
+|    mp    | 公众号支付  | array $order | Collection |
+|    h5    | H5 支付  | array $order | Collection |
+|   app    | APP 支付 | array $order | Collection |
+|   mini   | 小程序支付  | array $order | Collection |
+|   pos    |  刷卡支付  | array $order | Collection |
+|   scan   |  扫码支付  | array $order | Collection |
+
 
 ## 运行要求
 * PHP 7.0版本以上
 
 ## 安装
 ```shell
-composer require "tinymeng/chinaums"
+composer require tinymeng/chinaums -vvv
 ```
 ## 使用示例
 更多示例可查看[test](example/Wechat/)目录下的文件
+
 ```php
 <?php
 include_once '../../vendor/autoload.php';
@@ -23,18 +52,11 @@ use tinymeng\Chinaums\Factory;
 date_default_timezone_set('PRC');
 
 $config = [
-    // 请求网关  https://api-mop.chinaums.com/v1
-    'gateway' => 'https://test-api-open.chinaums.com/v1',
-    // 商户号
-    'mid' => '89********5678',
-    // 终端号
-    'tid' => '88*****01',
-    // 加密 APPID
-    'appid' => '10037e************a5e5a0006',
-    // 加密 KEY
-    'appkey' => '1c4e3****************9e5b312e8',
-    // 回调验证需要的md5key
-    'md5key' => 'impARTx**************aKXDhCaTCXJ6'
+    'mid' => '89********5678',// 商户号
+    'tid' => '88*****01',// 终端号
+    'appid' => '10037e************a5e5a0006',// 加密 APPID
+    'appkey' => '1c4e3****************9e5b312e8',// 加密 KEY
+    'md5key' => 'impARTx**************aKXDhCaTCXJ6'// 回调验证需要的md5key
 ];
 
 $data = [];
@@ -53,29 +75,13 @@ $data['subAppId'] = 'wx0bd72821b0ce53cb';
 // 微信必填  前端获取用户的openid 传给后台
 $data['subOpenId'] = 'o4Sic5HPuB3j-LmnQTVIC4G_oYqY';
 
-//分账
-// $subOrders = [];
-// $sub['totalAmount'] = 1;      // 支付子金额
-// $sub['mid'] = "898127210280001";      //
-// $sub1['totalAmount'] = 1;      // 支付子金额
-// $sub1['mid'] = "988460101800201";      //
-// $subOrders[] = $sub;
-// $subOrders[] = $sub1;
-// $data['divisionFlag'] = 'true'; //分账标识
-// $data['subOrders'] = $subOrders;      //
-
-// 使用方法1
-Factory::config($config);
-$app = Factory::Wechat()->mini();
+$app = Factory::Wechat($config)->mini();
 $reponse = $app->request($data);
 echo 'response:' . $reponse . PHP_EOL;
 
 
-// 使用方法2
-Factory::config($config);
-$reponse = Factory::Wechat()->pay($data);
-echo 'response:' . $reponse . PHP_EOL;
-
 ```
 ## 文档
-[点击查看银联商务文档](https://open.chinaums.com/resources/?code=651539656974952&url=b7abc3a6-0c49-43d4-ad7d-f6dd16ff35eb)
+[点击查看银联商务官方文档](https://open.chinaums.com/resources/?code=651539656974952&url=b7abc3a6-0c49-43d4-ad7d-f6dd16ff35eb)
+
+

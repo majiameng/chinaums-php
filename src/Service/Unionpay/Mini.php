@@ -11,12 +11,12 @@ class Mini extends Base
     /**
      * @var string 接口地址
      */
-    protected $api = '/netpay/uac/mini-order';
+    protected $api = '/v1/netpay/uac/mini-order';
     /**
      * @var array $body 请求参数
      */
     protected $body = [
-        'tradeType' => 'MINI_PAY'
+        'tradeType' => 'MINI'
     ];
     /**
      * 必传的值

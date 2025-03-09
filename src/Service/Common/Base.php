@@ -12,11 +12,13 @@ class Base
      */
     protected $config = [];
 
+    protected $gateway;
+    protected $gateway_type = 'default';
+
     /**
      * @var string 接口地址
      */
     protected $api;
-
     /**
      * @var array $body 请求参数
      */
@@ -26,11 +28,40 @@ class Base
      * @var array
      */
     protected $require = [];
-    public function __construct()
+
+    /**
+     * @param $config
+     */
+    public function __construct($config=[])
     {
+        if(!empty($config)){
+            $this->config = $config;
+            $this->loadConfigGateway();
+        }
+
     }
 
-    public function request($data = [])
+    /**
+     * 加载多网关
+     * @return Base
+     */
+    private function loadConfigGateway()
+    {
+        $gateway = $this->config['gateway'];// 正式环境
+        if($this->config['sandbox'] === false){
+            $this->gateway = isset($gateway[$this->gateway_type]) ? $gateway[$this->gateway_type] : $gateway['default'];// 沙箱环境
+        }else{
+            $this->gateway = $gateway['sandbox'];// 沙箱环境
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param array $data
+     * @return false|mixed|string
+     */
+    public function request(array $data = [])
     {
         $data['mid'] = $this->config['mid'];
         $data['tid'] = $this->config['tid'];
@@ -41,7 +72,7 @@ class Base
             $this->validate();
             $data = $this->body;
             $sign = $this->generateSign($data);
-            $gateway  = $this->config['gateway'] . $this->api;
+            $gateway  = $this->gateway . $this->api;
             $data = json_encode($data);
             if ('cli' == php_sapi_name()) {
                 echo 'api:' . $gateway . PHP_EOL;
@@ -65,18 +96,31 @@ class Base
         }
     }
 
+    /**
+     * @param $config
+     * @return $this
+     */
     public function setConfig($config)
     {
         $this->config = $config;
+        $this->loadConfigGateway();
         return $this;
     }
 
+    /**
+     * @param $value
+     * @return $this
+     */
     public function setBody($value)
     {
         $this->body = array_merge($this->body, $value);
         return $this;
     }
 
+    /**
+     * @return true
+     * @throws Exception
+     */
     protected function validate()
     {
         $require = $this->require;
@@ -107,6 +151,11 @@ class Base
         return $authorization;
     }
 
+    /**
+     * @param $name
+     * @param $value
+     * @return void
+     */
     public function __set($name, $value)
     {
         $this->body[$name] = $value;

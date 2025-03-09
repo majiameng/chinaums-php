@@ -1,7 +1,9 @@
 <?php
 
 namespace tinymeng\Chinaums\Interfaces;
-
+/**
+ * ProviderInterface
+ */
 interface ProviderInterface
 {
     public function pay($order);

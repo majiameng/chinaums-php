@@ -1,18 +1,16 @@
 <?php
 
-namespace tinymeng\Chinaums\Service\Wechat;
-
-use tinymeng\Chinaums\Service\Common\Base;
+namespace tinymeng\Chinaums\Service\Common;
 
 /**
- * 查询接口
+ * 退款查询接口
  */
-class Query extends Base
+class BaseRefundQuery extends Base
 {
     /**
      * @var string 接口地址
      */
-    protected $api = '/v1/netpay/query';
+    protected $api = '/v1/netpay/refund-query';
     /**
      * @var array $body 请求参数
      */

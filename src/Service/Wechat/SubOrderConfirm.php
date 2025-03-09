@@ -12,7 +12,7 @@ class SubOrderConfirm extends Base
     /**
      * @var string 接口地址
      */
-    protected $api = '/netpay/sub-orders-confirm';
+    protected $api = '/v1/netpay/sub-orders-confirm';
     /**
      * @var array $body 请求参数
      */

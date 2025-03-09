@@ -1,18 +1,18 @@
 <?php
 
-namespace tinymeng\Chinaums\Service\Wechat;
+namespace tinymeng\Chinaums\Service\Unionpay;
 
 use tinymeng\Chinaums\Service\Common\Base;
 
 /**
- * 查询接口
+ * H5 支付
  */
-class Query extends Base
+class H5 extends Base
 {
     /**
      * @var string 接口地址
      */
-    protected $api = '/v1/netpay/query';
+    protected $api = '/v1/netpay/uac/order';
     /**
      * @var array $body 请求参数
      */
@@ -22,5 +22,5 @@ class Query extends Base
      * 必传的值
      * @var array
      */
-    protected $require = ['requestTimestamp', 'merOrderId', 'mid', 'tid','instMid'];
+    protected $require = ['requestTimestamp', 'merOrderId', 'mid', 'tid', 'subAppId', 'subOpenId'];
 }

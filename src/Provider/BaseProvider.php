@@ -8,6 +8,9 @@ use tinymeng\Chinaums\Tools\Verify;
 
 use Exception;
 
+/**
+ * BaseProvider
+ */
 class BaseProvider implements ProviderInterface
 {
     protected $config = [];
@@ -15,20 +18,6 @@ class BaseProvider implements ProviderInterface
     {
         $this->config = $config;
     }
-
-    /**
-     * @param string $shortcut
-     * @param array $params
-     * @return mixed
-     */
-    public function __call(string $shortcut, array $params)
-    {
-        $class = '\\tinymeng\\Chinaums\\Service\\'.__CLASS__.'\\' . Str::studly($shortcut);
-        $service = new $class();
-        $service->setConfig($this->config);
-        return $service;
-    }
-
 
     public function pay($order)
     {
@@ -42,7 +31,7 @@ class BaseProvider implements ProviderInterface
 
     public function cancel($order)
     {
-        throw new Exception("Wechat does not support cancel api");
+        throw new Exception("Chinaums does not support cancel api");
     }
 
     public function close($order)
