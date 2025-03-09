@@ -1,8 +1,11 @@
 <?php
 
 return [
-    'gateway' => 'https://api-mop.chinaums.com/v1',// 请求网关
-    'sandbox_gateway' => 'https://test-api-open.chinaums.com/v1',// 沙箱网关
+    'gateway' => [
+        'default' => 'https://api-mop.chinaums.com',// 默认正式网关
+        'wh_open' => 'https://api-mop-wh.open.chinaums.com',// 正式网关
+        'sandbox' => 'https://test-api-open.chinaums.com',// 沙箱网关
+    ],
     'mid'       => '',// 商户号
     'tid'       => '',// 终端号
     'appid'     => '',// APPID
