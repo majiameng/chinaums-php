@@ -17,6 +17,7 @@ class H5 extends Base
      * @var array $body 请求参数
      */
     protected $body = [
+        'instMid'=>'H5DEFAULT',
     ];
     /**
      * 必传的值

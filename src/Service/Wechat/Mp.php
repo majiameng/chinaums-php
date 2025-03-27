@@ -17,11 +17,12 @@ class Mp extends Base
      * @var array $body 请求参数
      */
     protected $body = [
-        'tradeType' => 'JSAPI'
+        'tradeType' => 'JSAPI',
+        'instMid' => 'YUEDANDEFAULT',
     ];
     /**
      * 必传的值
      * @var array
      */
-    protected $require = ['requestTimestamp', 'merOrderId', 'mid', 'tid', 'subAppId', 'subOpenId', 'tradeType'];
+    protected $require = ['requestTimestamp', 'merOrderId', 'mid', 'tid', 'subAppId', 'subOpenId', 'tradeType','instMid'];
 }

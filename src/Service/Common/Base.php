@@ -95,6 +95,39 @@ class Base
             return json_encode(['errCode' => -1, 'errMsg' => $e->getMessage(), 'responseTimestamp' => null]);
         }
     }
+    
+    
+    public function getH5Request()
+    {
+        $data['mid'] = $this->config['mid'];
+        $data['tid'] = $this->config['tid'];
+        if ($data) {
+            $this->body = array_merge($this->body, $data);
+        }
+        
+        $this->validate();
+        $data = $this->body;
+        $sign = $this->generateSign($data);
+        $gateway  = $this->gateway . $this->api;
+        $data = json_encode($data);
+        if ('cli' == php_sapi_name()) {
+            echo 'api:' . $gateway . PHP_EOL;
+            echo 'request:' . $data . PHP_EOL;
+        }
+        $headers = [
+            'Content-Type: application/json',
+            'Content-Length: ' . strlen($data),
+            'Authorization: ' . $sign
+        ];
+        $headers = $headers;
+        $options = [
+            CURLOPT_HTTPHEADER => $headers,
+            CURLOPT_TIMEOUT => 60,
+            CURLOPT_CONNECTTIMEOUT => 30
+        ];
+        $response = Http::post($gateway, $data, $options);
+        return $response;
+    }
 
     /**
      * @param $config
