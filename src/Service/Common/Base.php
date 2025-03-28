@@ -58,22 +58,33 @@ class Base
     }
 
     /**
-     * @param array $data
-     * @return false|mixed|string
+     * @param $data
+     * @return string
+     * @throws Exception
      */
-    public function request(array $data = [])
+    private function loadData($data)
     {
         $data['mid'] = $this->config['mid'];
         $data['tid'] = $this->config['tid'];
         if ($data) {
             $this->body = array_merge($this->body, $data);
         }
+        $this->validate();
+        $data = $this->body;
+        return json_encode($data);
+    }
+
+    /**
+     * @param array $data
+     * @return false|mixed|string
+     */
+    public function request(array $data = [])
+    {
         try {
-            $this->validate();
-            $data = $this->body;
+            $data = $this->loadData($data);
             $sign = $this->generateSign($data);
             $gateway  = $this->gateway . $this->api;
-            $data = json_encode($data);
+
             if ('cli' == php_sapi_name()) {
                 echo 'api:' . $gateway . PHP_EOL;
                 echo 'request:' . $data . PHP_EOL;
@@ -83,7 +94,6 @@ class Base
                 'Content-Length: ' . strlen($data),
                 'Authorization: ' . $sign
             ];
-            $headers = $headers;
             $options = [
                 CURLOPT_HTTPHEADER => $headers,
                 CURLOPT_TIMEOUT => 60,
@@ -95,38 +105,34 @@ class Base
             return json_encode(['errCode' => -1, 'errMsg' => $e->getMessage(), 'responseTimestamp' => null]);
         }
     }
-    
-    
-    public function getH5Request()
+
+    /**
+     * @param array $data
+     * @return string
+     * @throws Exception
+     */
+    public function formRequest(array $data = [])
     {
-        $data['mid'] = $this->config['mid'];
-        $data['tid'] = $this->config['tid'];
-        if ($data) {
-            $this->body = array_merge($this->body, $data);
+        try {
+            $data = $this->loadData($data);
+            $params = $this->generateSign($data,true);
+            $gateway  = $this->gateway . $this->api;
+
+            $data = json_encode($data);
+            if ('cli' == php_sapi_name()) {
+                echo 'api:' . $gateway . PHP_EOL;
+                echo 'request:' . $data . PHP_EOL;
+            }
+
+            $options = [
+                CURLOPT_TIMEOUT => 60,
+                CURLOPT_CONNECTTIMEOUT => 30
+            ];
+            $response = Http::get($gateway,$params,$options);
+            return $response;
+        } catch (Exception $e) {
+            return json_encode(['errCode' => -1, 'errMsg' => $e->getMessage(), 'responseTimestamp' => null]);
         }
-        
-        $this->validate();
-        $data = $this->body;
-        $sign = $this->generateSign($data);
-        $gateway  = $this->gateway . $this->api;
-        $data = json_encode($data);
-        if ('cli' == php_sapi_name()) {
-            echo 'api:' . $gateway . PHP_EOL;
-            echo 'request:' . $data . PHP_EOL;
-        }
-        $headers = [
-            'Content-Type: application/json',
-            'Content-Length: ' . strlen($data),
-            'Authorization: ' . $sign
-        ];
-        $headers = $headers;
-        $options = [
-            CURLOPT_HTTPHEADER => $headers,
-            CURLOPT_TIMEOUT => 60,
-            CURLOPT_CONNECTTIMEOUT => 30
-        ];
-        $response = Http::post($gateway, $data, $options);
-        return $response;
     }
 
     /**
@@ -165,13 +171,14 @@ class Base
         }
         return true;
     }
+
     /**
      * 根绝类型生成sign
-     * @param $params
-     * @param string $signType
-     * @return string
+     * @param $body
+     * @param bool $openForm
+     * @return string|array
      */
-    public function generateSign($body)
+    public function generateSign($body,$openForm=false)
     {
         $body = (!is_string($body)) ? json_encode($body) : $body;
         $appid = $this->config['appid'];
@@ -181,6 +188,16 @@ class Base
         $str = bin2hex(hash('sha256', $body, true));
         $signature = base64_encode(hash_hmac('sha256', "$appid$timestamp$nonce$str", $appkey, true));
         $authorization = "OPEN-BODY-SIG AppId=\"$appid\", Timestamp=\"$timestamp\", Nonce=\"$nonce\", Signature=\"$signature\"";
+        if($openForm){
+            return [
+                'appId'=>$appid,
+                'timestamp'=>$timestamp,
+                'nonce'=>$nonce,
+                'content'=>$body,
+                'signature'=>$signature,
+                'authorization'=>'OPEN-FORM-PARAM',
+            ];
+        }
         return $authorization;
     }
 

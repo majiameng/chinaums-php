@@ -23,5 +23,16 @@ class H5 extends Base
      * 必传的值
      * @var array
      */
-    protected $require = ['requestTimestamp', 'merOrderId', 'mid', 'tid', 'subAppId', 'subOpenId'];
+    protected $require = ['requestTimestamp', 'merOrderId', 'mid', 'tid'];
+
+    /**
+     * @param array $data
+     * @return false|mixed|string
+     * @throws \Exception
+     */
+    public function request(array $data = [])
+    {
+        return $this->formRequest($data);
+    }
+    
 }
