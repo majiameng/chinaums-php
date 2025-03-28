@@ -5,15 +5,15 @@ use tinymeng\Chinaums\Tools\Str;
 
 /**
  * Unionpay
- * @method static \tinymeng\Chinaums\Service\Alipay\App App(array $params) App支付
- * @method static \tinymeng\Chinaums\Service\Alipay\Close Close(array $params) 关闭支付
- * @method static \tinymeng\Chinaums\Service\Alipay\H5 H5(array $params) H5支付
- * @method static \tinymeng\Chinaums\Service\Alipay\Mini Mini(array $params) 小程序支付
- * @method static \tinymeng\Chinaums\Service\Alipay\Pos Pos(array $params) 刷卡支付
- * @method static \tinymeng\Chinaums\Service\Alipay\PosRefund PosRefund(array $params) 刷卡退款
- * @method static \tinymeng\Chinaums\Service\Alipay\Query Query(array $params) 查询订单
- * @method static \tinymeng\Chinaums\Service\Alipay\Refund Refund(array $params) 退款
- * @method static \tinymeng\Chinaums\Service\Alipay\RefundQuery RefundQuery(array $params) 退款查询
+ * @method static \tinymeng\Chinaums\Service\Unionpay\App App(array $params) App支付
+ * @method static \tinymeng\Chinaums\Service\Unionpay\Close Close(array $params) 关闭支付
+ * @method static \tinymeng\Chinaums\Service\Unionpay\H5 H5(array $params) H5支付
+ * @method static \tinymeng\Chinaums\Service\Unionpay\Mini Mini(array $params) 小程序支付
+ * @method static \tinymeng\Chinaums\Service\Unionpay\Pos Pos(array $params) 刷卡支付
+ * @method static \tinymeng\Chinaums\Service\Unionpay\PosRefund PosRefund(array $params) 刷卡退款
+ * @method static \tinymeng\Chinaums\Service\Unionpay\Query Query(array $params) 查询订单
+ * @method static \tinymeng\Chinaums\Service\Unionpay\Refund Refund(array $params) 退款
+ * @method static \tinymeng\Chinaums\Service\Unionpay\RefundQuery RefundQuery(array $params) 退款查询
  */
 class Unionpay extends BaseProvider
 {
