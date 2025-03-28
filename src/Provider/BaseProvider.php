@@ -30,7 +30,7 @@ class BaseProvider implements ProviderInterface
             throw new TException("Chinaums:{$class}类不存在");
         }
 
-        return new $class($this->config,$params);
+        return new $class($this->config,$params[0]??[]);
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace tinymeng\Chinaums\Service\Common;
 
 use Exception;
+use tinymeng\Chinaums\Exception\TException;
 use tinymeng\Chinaums\Tools\Http;
 
 /**
@@ -116,7 +117,10 @@ class Base
             $response = Http::post($gateway, $data, $options);
             return $response;
         } catch (Exception $e) {
-            return json_encode(['errCode' => -1, 'errMsg' => $e->getMessage(), 'responseTimestamp' => null]);
+            if ('cli' == php_sapi_name()) {
+                echo $e->getMessage() . PHP_EOL;
+            }
+            throw new TException("Chinaums request error:".$e->getMessage());
         }
     }
 
@@ -143,7 +147,7 @@ class Base
             $response = Http::get($gateway,$params,$options);
             return $response;
         } catch (Exception $e) {
-            return json_encode(['errCode' => -1, 'errMsg' => $e->getMessage(), 'responseTimestamp' => null]);
+            throw new TException("Chinaums formRequest error:".$e->getMessage());
         }
     }
 
@@ -176,6 +180,7 @@ class Base
     {
         $require = $this->require;
         $key = array_keys($this->body);
+
         foreach ($require as $v) {
             if (!in_array($v, $key)) {
                 throw new Exception($v . ' is require！！');

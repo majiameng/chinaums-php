@@ -7,6 +7,7 @@ namespace tinymeng\Chinaums\Provider;
  * @method static \tinymeng\Chinaums\Service\Alipay\App App(array $params) App支付
  * @method static \tinymeng\Chinaums\Service\Alipay\Close Close(array $params) 关闭支付
  * @method static \tinymeng\Chinaums\Service\Alipay\H5 H5(array $params) H5支付
+ * @method static \tinymeng\Chinaums\Service\Alipay\Mp Mp(array $params) 公众号支付
  * @method static \tinymeng\Chinaums\Service\Alipay\Mini Mini(array $params) 小程序支付
  * @method static \tinymeng\Chinaums\Service\Alipay\Pos Pos(array $params) 刷卡支付
  * @method static \tinymeng\Chinaums\Service\Alipay\PosRefund PosRefund(array $params) 刷卡退款
