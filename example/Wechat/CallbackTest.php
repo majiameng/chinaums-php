@@ -9,6 +9,6 @@ $config = include_once './Config/Config.php';
 
 $data = [];
 Factory::config($config);
-$reponse = Factory::Wechat()->callback($data);
+$response = Factory::Wechat()->callback($data);
 echo Factory::Wechat()->success().PHP_EOL;
-echo 'response:' . (int)$reponse . PHP_EOL;
+echo 'response:' . (int)$response . PHP_EOL;

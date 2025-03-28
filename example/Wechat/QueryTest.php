@@ -14,5 +14,5 @@ $data = [
     'instMid' => 'MINIDEFAULT',
 ];
 Factory::config($config);
-$reponse = Factory::Wechat()->find($data);
-echo 'response:' . $reponse . PHP_EOL;
+$response = Factory::Wechat()->find($data);
+echo 'response:' . $response . PHP_EOL;

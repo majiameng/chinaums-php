@@ -5,6 +5,12 @@ define('CHINAUMS_ROOT_PATH', dirname(__DIR__));
 use Exception;
 use tinymeng\tools\StringTool;
 
+/**
+ * @method static \tinymeng\Chinaums\Provider\Unionpay Unionpay(null|array $config) 网银支付
+ * @method static \tinymeng\Chinaums\Provider\Alipay Alipay(null|array $config) 支付宝支付
+ * @method static \tinymeng\Chinaums\Provider\Wechat Wechat(null|array $config) 微信支付
+ * @method static \tinymeng\Chinaums\Provider\Contract Contract(null|array $config) 自助签约
+ */
 class Factory
 {
 
@@ -15,7 +21,7 @@ class Factory
 
     /**
      * @param $gateway
-     * @param $config
+     * @param null|array $config
      * @return mixed
      * @throws Exception
      */

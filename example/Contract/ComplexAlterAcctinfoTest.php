@@ -21,5 +21,5 @@ $data = [
     ]
 ];
 Factory::config($config);
-$reponse = Factory::Contract()->ComplexAlterAcctinfo()->request($data);
-echo 'response:' . $reponse . PHP_EOL;
+$response = Factory::Contract()->ComplexAlterAcctinfo()->request($data);
+echo 'response:' . $response . PHP_EOL;

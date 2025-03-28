@@ -15,5 +15,5 @@ $data = [
     'platformAmount' => 100, //分
 ];
 Factory::config($config);
-$reponse = Factory::Wechat()->SubOrderConfirm()->request($data);
-echo 'response:' . $reponse . PHP_EOL;
+$response = Factory::Wechat()->SubOrderConfirm()->request($data);
+echo 'response:' . $response . PHP_EOL;

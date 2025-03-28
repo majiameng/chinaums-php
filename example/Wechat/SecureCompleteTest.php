@@ -15,5 +15,5 @@ $data = [
     'completedAmount' => 100, //分
 ];
 Factory::config($config);
-$reponse = Factory::Wechat()->SecureComplete()->request($data);
-echo 'response:' . $reponse . PHP_EOL;
+$response = Factory::Wechat()->SecureComplete()->request($data);
+echo 'response:' . $response . PHP_EOL;

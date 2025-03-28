@@ -2,11 +2,10 @@
 
 namespace tinymeng\Chinaums\Provider;
 
+use tinymeng\Chinaums\Exception\TException;
 use tinymeng\Chinaums\Interfaces\ProviderInterface;
 use tinymeng\Chinaums\Tools\Str;
 use tinymeng\Chinaums\Tools\Verify;
-
-use Exception;
 
 /**
  * BaseProvider
@@ -19,31 +18,25 @@ class BaseProvider implements ProviderInterface
         $this->config = $config;
     }
 
-    public function pay($order)
+    /**
+     * @param string $shortcut
+     * @param array $params
+     * @return mixed
+     */
+    public function __call(string $shortcut, array $params=[])
     {
-        return $this->__call('Mini', [])->request($order);
+        $class = str_replace('Provider','Service',static::class).'\\' . Str::studly($shortcut);
+        if(!class_exists($class)){
+            throw new TException("Chinaums:{$class}类不存在");
+        }
+
+        return new $class($this->config,$params);
     }
 
-    public function find($order)
-    {
-        return $this->__call('Query', [])->request($order);
-    }
-
-    public function cancel($order)
-    {
-        throw new Exception("Chinaums does not support cancel api");
-    }
-
-    public function close($order)
-    {
-        return $this->__call('Close', [])->request($order);
-    }
-
-    public function refund($order)
-    {
-        return $this->__call('Refund', [])->request($order);
-    }
-
+    /**
+     * @param $contents
+     * @return bool
+     */
     public function callback($contents)
     {
         $params = array_map(function ($value) {
@@ -58,6 +51,9 @@ class BaseProvider implements ProviderInterface
         return false;
     }
 
+    /**
+     * @return string
+     */
     public function success()
     {
         return 'SUCCESS';

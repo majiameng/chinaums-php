@@ -13,7 +13,7 @@ $data = [
     'request_seq' => uniqid(), 
 ];
 Factory::config($config);
-$reponse = Factory::Contract()->AlterSign()->request($data);
-// $url = Factory::Contract()->AlterSign()->getUrl($data);
-echo 'response:' . $reponse . PHP_EOL;
-echo 'url:' . $url . PHP_EOL;
+$response = Factory::Contract()->AlterSign($data);
+//$url = Factory::Contract()->AlterSign()->getUrl($data);
+echo 'response:' . $response . PHP_EOL;
+//echo 'url:' . $url . PHP_EOL;

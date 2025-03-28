@@ -15,5 +15,5 @@ $data = [
     'trans_amt' => '1', 
 ];
 Factory::config($config);
-$reponse = Factory::Contract()->CompanyAccountVerify($data);
-echo 'response:' . $reponse . PHP_EOL;
+$response = Factory::Contract()->CompanyAccountVerify($data);
+echo 'response:' . $response . PHP_EOL;

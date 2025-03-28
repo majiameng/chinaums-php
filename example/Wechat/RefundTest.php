@@ -14,5 +14,5 @@ $data = [
     'refundAmount' => 100,
 ];
 Factory::config($config);
-$reponse = Factory::Wechat()->refund($data);
-echo 'response:' . $reponse . PHP_EOL;
+$response = Factory::Wechat()->refund($data);
+echo 'response:' . $response . PHP_EOL;

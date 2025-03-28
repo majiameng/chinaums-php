@@ -19,6 +19,6 @@ $data = [
     'request_seq' => uniqid(), 
 ];
 Factory::config($config);
-// $reponse = Factory::Contract()->PicUpload()->request($data);
-$reponse = Factory::Contract()->PicUpload($data);
-echo 'response:' . $reponse . PHP_EOL;
+// $response = Factory::Contract()->PicUpload()->request($data);
+$response = Factory::Contract()->PicUpload($data);
+echo 'response:' . $response . PHP_EOL;

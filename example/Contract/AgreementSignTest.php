@@ -13,5 +13,5 @@ $data = [
     'request_seq' => uniqid(), 
 ];
 Factory::config($config);
-$reponse = Factory::Contract()->AgreementSign($data);
-echo 'response:' . $reponse . PHP_EOL;
+$response = Factory::Contract()->AgreementSign($data);
+echo 'response:' . $response . PHP_EOL;

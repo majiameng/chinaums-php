@@ -27,6 +27,7 @@ class AlterSign extends Base
      * @var array
      */
     protected $require = ['service', 'accesser_id', 'sign_type', 'request_date', 'request_seq', 'ums_reg_id'];
+
     /**
      * 获取get前端签约方式
      *

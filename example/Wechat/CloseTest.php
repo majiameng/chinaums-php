@@ -13,5 +13,5 @@ $data = [
     'instMid' => 'MINIDEFAULT',//业务类型 
 ];
 Factory::config($config);
-$reponse = Factory::Wechat()->close($data);
-echo 'response:' . $reponse . PHP_EOL;
+$response = Factory::Wechat()->close($data);
+echo 'response:' . $response . PHP_EOL;

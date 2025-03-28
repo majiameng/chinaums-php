@@ -27,8 +27,13 @@ class DataDownload extends Base
      * @var array
      */
     protected $require = ['service', 'accesser_id', 'sign_type', 'request_date', 'request_seq', 'data_type'];
-    public function request($data = [])
+
+    /**
+     * @return false|mixed|string
+     */
+    public function request()
     {
+        $data = $this->params;
         $data['accesser_id'] = $this->config['accesser_id'];
         $key = $this->config['private_key'];
         if ($data) {

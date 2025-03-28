@@ -14,5 +14,5 @@ $data = [
     'instMid' => 'MINIDEFAULT',
 ];
 Factory::config($config);
-$reponse = Factory::Wechat()->SecureCancel()->request($data);
-echo 'response:' . $reponse . PHP_EOL;
+$response = Factory::Wechat()->SecureCancel()->request($data);
+echo 'response:' . $response . PHP_EOL;

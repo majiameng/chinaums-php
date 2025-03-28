@@ -14,5 +14,5 @@ $data = [
     'key' => '张江',
 ];
 Factory::config($config);
-$reponse = Factory::Contract()->BranchBankList()->request($data);
-echo 'response:' . $reponse . PHP_EOL;
+$response = Factory::Contract()->BranchBankList()->request($data);
+echo 'response:' . $response . PHP_EOL;

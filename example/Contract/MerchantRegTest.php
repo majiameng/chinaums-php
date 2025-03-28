@@ -14,8 +14,8 @@ $data = [
 $platform = 'H5';
 // $platform = 'pc';
 Factory::config($config);
-$reponse = Factory::Contract()
+$response = Factory::Contract()
     ->MerchantReg()
     ->setPlatform($platform)
     ->request($data);
-echo 'response:' . $reponse . PHP_EOL;
+echo 'response:' . $response . PHP_EOL;

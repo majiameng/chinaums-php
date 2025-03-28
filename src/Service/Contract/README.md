@@ -18,21 +18,21 @@ $data = [
 $platform = 'H5';
 // $platform = 'pc';
 Factory::config($config);
-$reponse = Factory::Contract()->MerchantReg()->setPlatform($platform)->request($data);
+$response = Factory::Contract()->MerchantReg()->setPlatform($platform)->request($data);
 // 3.4第二步 入网状态查询接口
-$reponse = Factory::Contract()->ApplyQry($data);
+$response = Factory::Contract()->ApplyQry($data);
 ```
 #### 后台接入示例
 
 ```php
 // 配置参考前提接入 这里简化调用过程
 Factory::config($config);
-$reponse = Factory::Contract()->PicUpload($data);//3.1
-$reponse = Factory::Contract()->complexUpload($data);//3.2
-$reponse = Factory::Contract()->requestAccountVerify($data);//3.7
-$reponse = Factory::Contract()->companyAccountVerify($data);//3.6
-$reponse = Factory::Contract()->agreementSign($data);//3.3
-$reponse = Factory::Contract()->applyQry($data);//3.4
+$response = Factory::Contract()->PicUpload($data);//3.1
+$response = Factory::Contract()->complexUpload($data);//3.2
+$response = Factory::Contract()->requestAccountVerify($data);//3.7
+$response = Factory::Contract()->companyAccountVerify($data);//3.6
+$response = Factory::Contract()->agreementSign($data);//3.3
+$response = Factory::Contract()->applyQry($data);//3.4
 
 ```
 #### 账户变更接口调用顺序
@@ -40,8 +40,8 @@ $reponse = Factory::Contract()->applyQry($data);//3.4
 ```php
 // 配置参考前提接入 这里简化调用过程
 Factory::config($config);
-$reponse = Factory::Contract()->PicUpload();//3.1
-$reponse = Factory::Contract()->ComplexAlterAcctinfo()->request($data);//3.9
-$reponse = Factory::Contract()->AlterSign()->request($data);//3.10
-$reponse = Factory::Contract()->AlterQry()->request($data);//3.11
+$response = Factory::Contract()->PicUpload();//3.1
+$response = Factory::Contract()->ComplexAlterAcctinfo()->request($data);//3.9
+$response = Factory::Contract()->AlterSign()->request($data);//3.10
+$response = Factory::Contract()->AlterQry()->request($data);//3.11
 ```

@@ -26,13 +26,12 @@ class H5 extends Base
     protected $require = ['requestTimestamp', 'merOrderId', 'mid', 'tid'];
 
     /**
-     * @param array $data
      * @return false|mixed|string
      * @throws \Exception
      */
-    public function request(array $data = [])
+    public function request()
     {
-        return $this->formRequest($data);
+        return $this->formRequest();
     }
     
 }

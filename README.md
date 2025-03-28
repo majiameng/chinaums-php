@@ -77,8 +77,8 @@ $data['subAppId'] = 'wx0bd72821b0ce53cb';
 $data['subOpenId'] = 'o4Sic5HPuB3j-LmnQTVIC4G_oYqY';
 
 $app = Factory::Wechat($config)->mini();
-$reponse = $app->request($data);
-echo 'response:' . $reponse . PHP_EOL;
+$response = $app->request($data);
+echo 'response:' . $response . PHP_EOL;
 
 
 ```

@@ -6,27 +6,9 @@ use tinymeng\Chinaums\Tools\Http;
 use tinymeng\Chinaums\Tools\DES;
 use Exception;
 
-class Base
+class Base extends \tinymeng\Chinaums\Service\Common\Base
 {
-    /**
-     * @var array $config 网关
-     */
-    protected $config = [];
 
-    /**
-     * @var string 接口地址
-     */
-    protected $api;
-
-    /**
-     * @var array $body 请求参数
-     */
-    protected $body;
-    /**
-     * 必传的值
-     * @var array
-     */
-    protected $require = [];
     /**
      * 加密算法
      *
@@ -39,9 +21,7 @@ class Base
      * @var string get post
      */
     protected $httpMethod = 'get';
-    public function __construct()
-    {
-    }
+
 
     public function request($data = [])
     {
@@ -86,32 +66,4 @@ class Base
         }
     }
 
-    public function setConfig($config)
-    {
-        $this->config = $config;
-        return $this;
-    }
-
-    public function setBody($value)
-    {
-        $this->body = array_merge($this->body, $value);
-        return $this;
-    }
-
-    protected function validate()
-    {
-        $require = $this->require;
-        $key = array_keys($this->body);
-        foreach ($require as $v) {
-            if (!in_array($v, $key)) {
-                throw new Exception($v . ' is require！！');
-            }
-        }
-        return true;
-    }
-
-    public function __set($name, $value)
-    {
-        $this->body[$name] = $value;
-    }
 }

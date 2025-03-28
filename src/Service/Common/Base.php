@@ -4,8 +4,11 @@ namespace tinymeng\Chinaums\Service\Common;
 
 use Exception;
 use tinymeng\Chinaums\Tools\Http;
-use tinymeng\tools\FileTool;
 
+/**
+ * Base
+ * @method static \tinymeng\Chinaums\Service\Common\Base request(array $params) 创建请求
+ */
 class Base
 {
     /**
@@ -25,6 +28,11 @@ class Base
      */
     protected $body;
     /**
+     * 代码传输过来的请求参数
+     * @var
+     */
+    protected $params;
+    /**
      * 必传的值
      * @var array
      */
@@ -32,13 +40,15 @@ class Base
 
     /**
      * @param $config
+     * @param $params
      */
-    public function __construct($config=[])
+    public function __construct($config=[],$params=[])
     {
         if(!empty($config)){
             $this->config = $config;
             $this->loadConfigGateway();
         }
+        $this->params = $params;
     }
 
     /**
@@ -58,12 +68,12 @@ class Base
     }
 
     /**
-     * @param $data
-     * @return string
+     * @return false|string
      * @throws Exception
      */
-    private function loadData($data)
+    private function loadData()
     {
+        $data = $this->params;
         $data['mid'] = $this->config['mid'];
         $data['tid'] = $this->config['tid'];
         if ($data) {
@@ -71,17 +81,21 @@ class Base
         }
         $this->validate();
         $data = $this->body;
-        return json_encode($data);
+        $data = json_encode($data);
+        return $data;
     }
 
     /**
-     * @param array $data
      * @return false|mixed|string
      */
-    public function request(array $data = [])
+    public function request($params = [])
     {
+        if(!empty($params)){
+            $this->params = $params;
+        }
+
         try {
-            $data = $this->loadData($data);
+            $data = $this->loadData();
             $sign = $this->generateSign($data);
             $gateway  = $this->gateway . $this->api;
 
@@ -89,9 +103,6 @@ class Base
                 echo 'api:' . $gateway . PHP_EOL;
                 echo 'request:' . $data . PHP_EOL;
             }
-            $this->writeLog('api:' . $gateway);
-            $this->writeLog('request:' . $data);
-
             $headers = [
                 'Content-Type: application/json',
                 'Content-Length: ' . strlen($data),
@@ -103,7 +114,6 @@ class Base
                 CURLOPT_CONNECTTIMEOUT => 30
             ];
             $response = Http::post($gateway, $data, $options);
-            $this->writeLog('response:' . $response);
             return $response;
         } catch (Exception $e) {
             return json_encode(['errCode' => -1, 'errMsg' => $e->getMessage(), 'responseTimestamp' => null]);
@@ -111,14 +121,12 @@ class Base
     }
 
     /**
-     * @param array $data
      * @return string
-     * @throws Exception
      */
-    public function formRequest(array $data = [])
+    public function formRequest()
     {
         try {
-            $data = $this->loadData($data);
+            $data = $this->loadData();
             $params = $this->generateSign($data,true);
             $gateway  = $this->gateway . $this->api;
 
@@ -127,15 +135,12 @@ class Base
                 echo 'api:' . $gateway . PHP_EOL;
                 echo 'request:' . $data . PHP_EOL;
             }
-            $this->writeLog('api:' . $gateway);
-            $this->writeLog('request:' . $data);
 
             $options = [
                 CURLOPT_TIMEOUT => 60,
                 CURLOPT_CONNECTTIMEOUT => 30
             ];
             $response = Http::get($gateway,$params,$options);
-            $this->writeLog('response:' . $response);
             return $response;
         } catch (Exception $e) {
             return json_encode(['errCode' => -1, 'errMsg' => $e->getMessage(), 'responseTimestamp' => null]);
@@ -178,12 +183,11 @@ class Base
         }
         return true;
     }
-
     /**
      * 根绝类型生成sign
-     * @param $body
-     * @param bool $openForm
-     * @return string|array
+     * @param $params
+     * @param string $signType
+     * @return string
      */
     public function generateSign($body,$openForm=false)
     {
@@ -196,7 +200,7 @@ class Base
         $signature = base64_encode(hash_hmac('sha256', "$appid$timestamp$nonce$str", $appkey, true));
         $authorization = "OPEN-BODY-SIG AppId=\"$appid\", Timestamp=\"$timestamp\", Nonce=\"$nonce\", Signature=\"$signature\"";
         if($openForm){
-            return [
+            $params = [
                 'appId'=>$appid,
                 'timestamp'=>$timestamp,
                 'nonce'=>$nonce,
@@ -204,6 +208,7 @@ class Base
                 'signature'=>$signature,
                 'authorization'=>'OPEN-FORM-PARAM',
             ];
+            return $params;
         }
         return $authorization;
     }
@@ -216,14 +221,5 @@ class Base
     public function __set($name, $value)
     {
         $this->body[$name] = $value;
-    }
-
-    /**
-     * @param $message
-     * @return void
-     */
-    public function writeLog($message,$fileName='chinaums')
-    {
-        FileTool::writeLog($message,$fileName);
     }
 }

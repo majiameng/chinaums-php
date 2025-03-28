@@ -2,7 +2,6 @@
 
 namespace tinymeng\Chinaums\Service\Contract;
 
-use tinymeng\Chinaums\Service\Contract\Base;
 use tinymeng\Chinaums\Tools\DES;
 use Exception;
 

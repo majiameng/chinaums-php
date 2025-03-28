@@ -2,8 +2,6 @@
 
 namespace tinymeng\Chinaums\Service\Contract;
 
-use tinymeng\Chinaums\Service\Contract\Base;
-
 /**
  * 商户终端号查询接口
  */

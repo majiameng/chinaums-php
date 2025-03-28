@@ -37,12 +37,11 @@ $data['tradeType'] = 'JSAPI';
 
 // 使用方法1
 Factory::config($config);
-$app = Factory::Wechat()->mini();
-$reponse = $app->request($data);
-echo 'response:' . $reponse . PHP_EOL;
+$response = Factory::Wechat()->mini($data);
+echo 'response:' . $response . PHP_EOL;
 
 
 // 使用方法2
 // Factory::config($config);
-// $reponse = Factory::Wechat()->pay($data);
-// echo 'response:' . $reponse . PHP_EOL;
+// $response = Factory::Wechat()->pay($data);
+// echo 'response:' . $response . PHP_EOL;

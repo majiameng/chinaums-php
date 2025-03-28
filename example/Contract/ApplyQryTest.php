@@ -14,5 +14,5 @@ $data = [
     'request_seq' => uniqid(), 
 ];
 Factory::config($config);
-$reponse = Factory::Contract()->ApplyQry($data);
-echo 'response:' . $reponse . PHP_EOL;
+$response = Factory::Contract()->ApplyQry($data);
+echo 'response:' . $response . PHP_EOL;
