@@ -4,6 +4,7 @@ namespace tinymeng\Chinaums\Service\Common;
 
 use Exception;
 use tinymeng\Chinaums\Tools\Http;
+use tinymeng\tools\FileTool;
 
 class Base
 {
@@ -38,7 +39,6 @@ class Base
             $this->config = $config;
             $this->loadConfigGateway();
         }
-
     }
 
     /**
@@ -89,6 +89,9 @@ class Base
                 echo 'api:' . $gateway . PHP_EOL;
                 echo 'request:' . $data . PHP_EOL;
             }
+            $this->writeLog('api:' . $gateway);
+            $this->writeLog('request:' . $data);
+
             $headers = [
                 'Content-Type: application/json',
                 'Content-Length: ' . strlen($data),
@@ -100,6 +103,7 @@ class Base
                 CURLOPT_CONNECTTIMEOUT => 30
             ];
             $response = Http::post($gateway, $data, $options);
+            $this->writeLog('response:' . $response);
             return $response;
         } catch (Exception $e) {
             return json_encode(['errCode' => -1, 'errMsg' => $e->getMessage(), 'responseTimestamp' => null]);
@@ -123,12 +127,15 @@ class Base
                 echo 'api:' . $gateway . PHP_EOL;
                 echo 'request:' . $data . PHP_EOL;
             }
+            $this->writeLog('api:' . $gateway);
+            $this->writeLog('request:' . $data);
 
             $options = [
                 CURLOPT_TIMEOUT => 60,
                 CURLOPT_CONNECTTIMEOUT => 30
             ];
             $response = Http::get($gateway,$params,$options);
+            $this->writeLog('response:' . $response);
             return $response;
         } catch (Exception $e) {
             return json_encode(['errCode' => -1, 'errMsg' => $e->getMessage(), 'responseTimestamp' => null]);
@@ -209,5 +216,14 @@ class Base
     public function __set($name, $value)
     {
         $this->body[$name] = $value;
+    }
+
+    /**
+     * @param $message
+     * @return void
+     */
+    public function writeLog($message,$fileName='chinaums')
+    {
+        FileTool::writeLog($message,$fileName);
     }
 }
