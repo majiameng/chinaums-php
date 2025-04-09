@@ -5,6 +5,7 @@ namespace tinymeng\Chinaums\Service\Common;
 use Exception;
 use tinymeng\Chinaums\Exception\TException;
 use tinymeng\Chinaums\Tools\Http;
+use tinymeng\tools\FileTool;
 
 /**
  * Base
@@ -115,6 +116,7 @@ class Base
                 CURLOPT_CONNECTTIMEOUT => 30
             ];
             $response = Http::post($gateway, $data, $options);
+            $this->writeLog('Request url:'.$gateway.PHP_EOL.'params:'.json_encode($data).PHP_EOL.'options:'.json_encode($options).PHP_EOL.'response'.$response);
             return $response;
         } catch (Exception $e) {
             if ('cli' == php_sapi_name()) {
@@ -145,6 +147,7 @@ class Base
                 CURLOPT_CONNECTTIMEOUT => 30
             ];
             $response = Http::get($gateway,$params,$options);
+            $this->writeLog('formRequest url:'.$gateway.PHP_EOL.'params:'.json_encode($data).PHP_EOL.'options:'.json_encode($options).PHP_EOL.'response'.$response);
             return $response;
         } catch (Exception $e) {
             throw new TException("Chinaums formRequest error:".$e->getMessage());
@@ -226,5 +229,15 @@ class Base
     public function __set($name, $value)
     {
         $this->body[$name] = $value;
+    }
+
+    /**
+     * @param $message
+     * @param $file_name
+     * @return void
+     */
+    private function writeLog($message,$file_name = 'chinaums')
+    {
+        FileTool::writeLog($message,$file_name);
     }
 }
