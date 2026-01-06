@@ -5,7 +5,7 @@ use tinymeng\Chinaums\Factory;
 
 date_default_timezone_set('PRC');
 
-$config = include_once './Config/Config.php';
+$config = include_once '../../config/chinaums.php';
 
 $data = [
     'requestTimestamp' => date("YmdHis", time()),//请求时间

@@ -6,6 +6,7 @@ use Exception;
 use tinymeng\tools\StringTool;
 
 /**
+ * @method static \tinymeng\Chinaums\Provider\Chinaums Chinaums(null|array $config) 银联商务支付
  * @method static \tinymeng\Chinaums\Provider\Unionpay Unionpay(null|array $config) 网银支付
  * @method static \tinymeng\Chinaums\Provider\Alipay Alipay(null|array $config) 支付宝支付
  * @method static \tinymeng\Chinaums\Provider\Wechat Wechat(null|array $config) 微信支付
