@@ -22,5 +22,5 @@ class BasePos extends Base
      * 必传的值
      * @var array
      */
-    protected $require = ['requestTimestamp', 'merOrderId', 'mid', 'tid', 'subAppId', 'subOpenId'];
+    protected $require = ['merOrderId',  'subAppId', 'subOpenId'];
 }

@@ -24,5 +24,5 @@ class Mini extends Base
      * 必传的值
      * @var array
      */
-    protected $require = ['requestTimestamp', 'merOrderId', 'mid', 'tid', 'subAppId', 'subOpenId', 'tradeType','instMid'];
+    protected $require = ['merOrderId',  'subAppId', 'subOpenId', 'tradeType','instMid'];
 }

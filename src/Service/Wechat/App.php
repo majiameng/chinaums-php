@@ -23,5 +23,5 @@ class App extends Base
      * 必传的值
      * @var array
      */
-    protected $require = ['requestTimestamp', 'merOrderId', 'mid', 'tid', 'subAppId', 'subOpenId', 'tradeType'];
+    protected $require = ['merOrderId',  'subAppId', 'subOpenId', 'tradeType'];
 }

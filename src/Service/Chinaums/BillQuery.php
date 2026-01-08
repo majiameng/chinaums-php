@@ -14,16 +14,18 @@ class BillQuery extends Base
      * @var string 接口地址
      */
     protected $api = '/v1/netpay/bills/query';
-    
+
     /**
      * @var array $body 请求参数
      */
-    protected $body = [];
-    
+    protected $body = [
+        'instMid'=>'QRPAYDEFAULT',
+    ];
+
     /**
      * 必传的值
      * @var array
      */
-    protected $require = ['requestTimestamp', 'mid', 'tid', 'instMid', 'msgId'];
+    protected $require = ['billNo','billDate'];
 }
 

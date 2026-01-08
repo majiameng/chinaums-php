@@ -21,5 +21,5 @@ class BaseClose extends Base
      * 必传的值
      * @var array
      */
-    protected $require = ['requestTimestamp', 'merOrderId', 'mid', 'tid','instMid'];
+    protected $require = ['merOrderId', 'instMid'];
 }

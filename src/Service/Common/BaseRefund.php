@@ -19,5 +19,5 @@ class BaseRefund extends Base
      * 必传的值
      * @var array
      */
-    protected $require = ['requestTimestamp', 'merOrderId', 'mid', 'tid', 'refundAmount'];
+    protected $require = ['merOrderId',  'refundAmount'];
 }

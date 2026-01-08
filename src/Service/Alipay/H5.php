@@ -23,7 +23,7 @@ class H5 extends Base
      * 必传的值
      * @var array
      */
-    protected $require = ['requestTimestamp', 'merOrderId', 'mid', 'tid'];
+    protected $require = ['merOrderId', 'mid', 'tid'];
 
 
 

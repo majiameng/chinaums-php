@@ -78,6 +78,7 @@ class Base
         $data = $this->params;
         $data['mid'] = $this->config['mid'];
         $data['tid'] = $this->config['tid'];
+        $data['requestTimestamp'] = date("YmdHis", time());
         if ($data) {
             $this->body = array_merge($this->body, $data);
         }

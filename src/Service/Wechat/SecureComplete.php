@@ -22,5 +22,5 @@ class SecureComplete extends Base
      * 必传的值
      * @var array
      */
-    protected $require = ['requestTimestamp', 'merOrderId', 'mid', 'tid','instMid','completedAmount'];
+    protected $require = ['merOrderId', 'instMid','completedAmount'];
 }

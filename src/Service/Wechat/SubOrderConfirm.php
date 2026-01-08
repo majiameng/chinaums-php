@@ -22,5 +22,5 @@ class SubOrderConfirm extends Base
      * 必传的值
      * @var array
      */
-    protected $require = ['requestTimestamp', 'merOrderId', 'mid', 'tid','instMid','platformAmount'];
+    protected $require = ['merOrderId', 'instMid','platformAmount'];
 }

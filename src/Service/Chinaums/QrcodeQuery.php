@@ -24,6 +24,6 @@ class QrcodeQuery extends Base
      * 必传的值
      * @var array
      */
-    protected $require = ['requestTimestamp', 'mid', 'tid', 'instMid', 'msgId', 'billNo'];
+    protected $require = ['billNo','billDate'];
 }
 
