@@ -9,7 +9,7 @@ use tinymeng\Chinaums\Tools\Http;
 
 /**
  * B扫C支付（被扫）- 交易状态查询
- * 接口文档：https://open.chinaums.com/saas-doc/openplate/poslink/poslink-v6/transaction-v6/
+ * 接口文档：https://open.chinaums.com/saas-doc/openplate/poslink/poslink-v6/transaction-v6/P81GPdzq.html
  */
 class PosQuery extends Base
 {

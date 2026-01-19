@@ -9,6 +9,7 @@ use tinymeng\Chinaums\Tools\Http;
 
 /**
  * B扫C支付（被扫）- 刷卡支付
+ * 接口文档:https://open.chinaums.com/saas-doc/openplate/poslink/poslink-v6/transaction-v6/kXOZy68D.html
  */
 class Pos extends Base
 {

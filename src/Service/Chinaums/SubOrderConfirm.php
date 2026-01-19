@@ -5,27 +5,26 @@ namespace tinymeng\Chinaums\Service\Chinaums;
 use tinymeng\Chinaums\Service\Common\Base;
 
 /**
- * C扫B支付（主扫）- 二维码更新
- * 接口文档：https://open.chinaums.com/saas-doc/openplate/netpay/bills/bills/
+ * 异步分账确认
+ * 接口文档：https://open.chinaums.com/saas-doc/openplate/netpay/bills/bills/pqXbmy8v.html
  */
-class QrcodeUpdate extends Base
+class SubOrderConfirm extends Base
 {
     /**
      * @var string 接口地址
      */
-    protected $api = '/v1/netpay/bills/update-qrcode';
+    protected $api = '/v1/netpay/sub-orders-confirm';
     
     /**
      * @var array $body 请求参数
      */
     protected $body = [
-        'instMid'=>'QRPAYDEFAULT',
     ];
     
     /**
      * 必传的值
      * @var array
      */
-    protected $require = ['billNo'];
+    protected $require = ['merOrderId'];
 }
 

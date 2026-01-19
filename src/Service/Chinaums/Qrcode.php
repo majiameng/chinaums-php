@@ -20,7 +20,7 @@ class Qrcode extends BaseScan
      * @var array $body 请求参数
      */
     protected $body = [
-        'instMid'=>'H5DEFAULT',
+        'instMid'=>'QRPAYDEFAULT',
     ];
 
     /**

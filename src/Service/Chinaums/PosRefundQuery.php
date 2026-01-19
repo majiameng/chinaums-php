@@ -9,7 +9,7 @@ use tinymeng\Chinaums\Tools\Http;
 
 /**
  * B扫C支付（被扫）- 交易退款查询
- * 接口文档：https://open.chinaums.com/saas-doc/openplate/poslink/poslink-v6/transaction-v6/
+ * 接口文档：https://open.chinaums.com/saas-doc/openplate/poslink/poslink-v6/transaction-v6/42Gw1y2W.html
  */
 class PosRefundQuery extends Base
 {

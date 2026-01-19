@@ -6,7 +6,7 @@ use tinymeng\Chinaums\Service\Common\Base;
 
 /**
  * C扫B支付（主扫）- 担保撤销
- * 接口文档：https://open.chinaums.com/saas-doc/openplate/netpay/bills/bills/
+ * 接口文档：https://open.chinaums.com/saas-doc/openplate/netpay/bills/bills/awXPWY8n.html
  */
 class SecureCancel extends Base
 {
@@ -18,7 +18,9 @@ class SecureCancel extends Base
     /**
      * @var array $body 请求参数
      */
-    protected $body = [];
+    protected $body = [
+        'instMid' => 'QRPAYDEFAULT',
+    ];
     
     /**
      * 必传的值
