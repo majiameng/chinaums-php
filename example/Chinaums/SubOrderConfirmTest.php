@@ -11,8 +11,9 @@ $data = [
     'requestTimestamp' => date("YmdHis", time()),
     // 'merOrderId' => '101720220303143314904287',
     'merOrderId' => '101720220223102617810382',
-    'instMid' => 'MINIDEFAULT',
+    '
+    latformAmount' => 100, //分
 ];
 Factory::config($config);
-$response = Factory::Wechat()->SecureCancel()->request($data);
+$response = Factory::chinaums()->SubOrderConfirm()->request($data);
 echo 'response:' . $response . PHP_EOL;

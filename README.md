@@ -61,7 +61,7 @@ $response = $app->request($data);
 composer require tinymeng/chinaums -vvv
 ```
 ## 使用示例
-更多示例可查看[test](example/Wechat/)目录下的文件
+更多示例可查看[example](example/Wechat/)目录下的文件
 
 ```php
 <?php

@@ -11,9 +11,8 @@ $data = [
     'requestTimestamp' => date("YmdHis", time()),
     // 'merOrderId' => '101720220303143314904287',
     'merOrderId' => '101720220223102617810382',
-    'instMid' => 'MINIDEFAULT',
-    'platformAmount' => 100, //分
+    'completedAmount' => 100, //分
 ];
 Factory::config($config);
-$response = Factory::Wechat()->SubOrderConfirm()->request($data);
+$response = Factory::chinaums()->SecureComplete()->request($data);
 echo 'response:' . $response . PHP_EOL;
