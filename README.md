@@ -18,21 +18,40 @@ Welcome Star, welcome PR ！
 
 * 支持微信、支付宝、银联支付的API接口
 * 支持自助签约采集接口 [点击查看文档](/src/Service/Contract/README.md)
-* 如想申请更低费率请联系卫星：itinymeng 
+* 如想申请更低费率请联系微信：itinymeng 
 
-# 微信支付、支付宝支付、银联
+# 银联商务、微信支付、支付宝支付、云闪付
 
-微信支付目前直接内置支持以下快捷方式支付方法，对应的支付 method 如下：
+###  payment_method 支付方式
 
-|  method  |   说明   |      参数      |    返回值     |
-|:--------:|:------:|:------------:|:----------:|
-|    mp    | 公众号支付  | array $order | Collection |
-|    h5    | H5 支付  | array $order | Collection |
-|   app    | APP 支付 | array $order | Collection |
-|   mini   | 小程序支付  | array $order | Collection |
-|   pos    |  刷卡支付  | array $order | Collection |
-|   scan   |  扫码支付  | array $order | Collection |
+| 常量名      | 描述     |
+|----------|--------|
+| chinaums | 银联商务   |
+| alipay   | 支付宝    |
+| wechat   | 微信     |
+| unionpay | 银联云闪付  |
 
+支付目前直接内置支持以下快捷方式支付方法，对应的支付 method 如下：
+
+| 支付方式<br/>payment_method | 支付类型<br/>method |      说明      |      参数      |    返回值     |
+|:-----------------------:|:----------:|:------------:|:------------:|:----------:|
+|          银联商务           |    scan    | 扫码支付（C扫B 主扫） | array $order |   array    |
+|          银联商务           |    pos     | 刷卡支付（B扫C 被扫） | array $order | array |
+|      微信、支付宝、银联云闪付       |     mp     |    公众号支付     | array $order | array |
+|      微信、支付宝、银联云闪付       |     h5     |    H5 支付     | array $order | array |
+|      微信、支付宝、银联云闪付       |    app     |    APP 支付    | array $order | array |
+|      微信、支付宝、银联云闪付       |    mini    |    小程序支付     | array $order | array |
+
+使用事例
+```
+$paymentMethod = 'wechat'; //微信支付
+$method = 'mini'; // 小程序支付
+
+$config = []; //配置文件
+$data = []; //支付参数
+$app = Factory::$paymentMethod($config)->$method();
+$response = $app->request($data);
+```
 
 ## 运行要求
 * PHP 7.0版本以上
@@ -72,11 +91,11 @@ $data['orderDesc'] = '账单描述';
 // 支付总金额
 $data['totalAmount'] = 2; 
 // 微信必填
-$data['subAppId'] = 'wx0bd72821b0ce53cb';  
+$data['subAppId'] = 'wx0bd72821b0cxxxxx';  
 // 微信必填  前端获取用户的openid 传给后台
-$data['subOpenId'] = 'o4Sic5HPuB3j-LmnQTVIC4G_oYqY';
+$data['subOpenId'] = 'o4Sic5HPuB3j-LmnQTVIC4xxxxx';
 
-$app = Factory::Wechat($config)->mini();
+$app = Factory::wechat($config)->mini();
 $response = $app->request($data);
 echo 'response:' . $response . PHP_EOL;
 

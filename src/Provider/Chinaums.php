@@ -11,12 +11,12 @@ namespace tinymeng\Chinaums\Provider;
  * @method static \tinymeng\Chinaums\Service\Chinaums\PosRefundQuery PosRefundQuery(array $params) 交易退款查询
  * @method static \tinymeng\Chinaums\Service\Chinaums\PosVoid PosVoid(array $params) 支付撤销
  * C扫B支付（主扫）
- * @method static \tinymeng\Chinaums\Service\Chinaums\Qrcode Qrcode(array $params) 扫码支付(二维码获取)
- * @method static \tinymeng\Chinaums\Service\Chinaums\QrcodeUpdate QrcodeUpdate(array $params) 二维码更新
- * @method static \tinymeng\Chinaums\Service\Chinaums\QrcodeClose QrcodeClose(array $params) 二维码关闭
- * @method static \tinymeng\Chinaums\Service\Chinaums\QrcodeQuery QrcodeQuery(array $params) 查询二维码静态信息
+ * @method static \tinymeng\Chinaums\Service\Chinaums\Scan Scan(array $params) 扫码支付(二维码获取)
+ * @method static \tinymeng\Chinaums\Service\Chinaums\ScanUpdate ScanUpdate(array $params) 二维码更新
+ * @method static \tinymeng\Chinaums\Service\Chinaums\ScanClose ScanClose(array $params) 二维码关闭
+ * @method static \tinymeng\Chinaums\Service\Chinaums\ScanQuery ScanQuery(array $params) 查询二维码静态信息
  * @method static \tinymeng\Chinaums\Service\Chinaums\BillQuery BillQuery(array $params) 账单状态查询
- * @method static \tinymeng\Chinaums\Service\Chinaums\QrcodeRefund qrcodeRefund(array $params) 退款
+ * @method static \tinymeng\Chinaums\Service\Chinaums\ScanRefund qrcodeRefund(array $params) 退款
  * @method static \tinymeng\Chinaums\Service\Chinaums\SecureComplete SecureComplete(array $params) 担保完成
  * @method static \tinymeng\Chinaums\Service\Chinaums\SecureCancel SecureCancel(array $params) 担保撤销
  * @method static \tinymeng\Chinaums\Service\Chinaums\PreauthComplete PreauthComplete(array $params) 预授权完成

@@ -9,7 +9,7 @@ use tinymeng\Chinaums\Service\Common\BaseScan;
  * C扫B支付（主扫）- 扫码支付（二维码获取）
  * 接口文档：https://open.chinaums.com/saas-doc/openplate/netpay/bills/bills/je24KjzL.html
  */
-class Qrcode extends BaseScan
+class Scan extends BaseScan
 {
     /**
      * @var string 接口地址

@@ -5,15 +5,15 @@ namespace tinymeng\Chinaums\Service\Chinaums;
 use tinymeng\Chinaums\Service\Common\Base;
 
 /**
- * C扫B支付（主扫）- 查询二维码静态信息
- * 接口文档：https://open.chinaums.com/saas-doc/openplate/netpay/bills/bills/kpX9mjXr.html
+ * C扫B支付（主扫）- 二维码更新
+ * 接口文档：https://open.chinaums.com/saas-doc/openplate/netpay/bills/bills/
  */
-class QrcodeQuery extends Base
+class ScanUpdate extends Base
 {
     /**
      * @var string 接口地址
      */
-    protected $api = '/v1/netpay/bills/query-qrcode-info';
+    protected $api = '/v1/netpay/bills/update-qrcode';
     
     /**
      * @var array $body 请求参数
@@ -26,6 +26,6 @@ class QrcodeQuery extends Base
      * 必传的值
      * @var array
      */
-    protected $require = ['billNo','billDate'];
+    protected $require = ['billNo'];
 }
 

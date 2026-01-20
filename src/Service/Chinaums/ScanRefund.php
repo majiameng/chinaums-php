@@ -8,7 +8,7 @@ use tinymeng\Chinaums\Service\Common\BaseRefund;
  * C扫B支付（主扫）- 退款
  * 接口文档：https://open.chinaums.com/saas-doc/openplate/netpay/bills/bills/RqXB7bzE.html
  */
-class QrcodeRefund extends BaseRefund
+class ScanRefund extends BaseRefund
 {
     /**
      * @var string 接口地址

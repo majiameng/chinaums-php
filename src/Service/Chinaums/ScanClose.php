@@ -8,7 +8,7 @@ use tinymeng\Chinaums\Service\Common\Base;
  * C扫B支付（主扫）- 二维码关闭
  * 接口文档：https://open.chinaums.com/saas-doc/openplate/netpay/bills/bills/Br2jqkzG.html
  */
-class QrcodeClose extends Base
+class ScanClose extends Base
 {
     /**
      * @var string 接口地址
